@@ -18,6 +18,7 @@ def predict():
     #     train()
     
     # make prediction
-    learn = load_learner('./transfer_learn_fastai.pkl')
-    result = learn.predict(image)
-    return jsonify({"result": result[0], "probability": str(result[2].numpy()[0])})
+    # learn = load_learner('./transfer_learn_fastai.pkl')
+    # result = learn.predict(image)
+    # return jsonify({"result": result[0], "probability": str(result[2].numpy()[0])})
+    return "hi"
