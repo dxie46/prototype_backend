@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from PIL import Image
 import pickle
 import os
-from fastai.vision.all import load_learner, predict, PILImage
+from fastai.vision.all import *
 from utils.parse import label_func
 
 app = Flask(__name__)
