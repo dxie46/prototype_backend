@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from main import train
 from PIL import Image
 import pickle
 import os
@@ -14,9 +13,9 @@ def predict():
     file = request.files['image']
     image = PILImage.create(file.stream)
 
-    if not os.path.exists('./transfer_learn_fastai.pkl'):
-        print('model doesnt exist, creating it')
-        train()
+    # if not os.path.exists('./transfer_learn_fastai.pkl'):
+    #     print('model doesnt exist, creating it')
+    #     train()
     
     # make prediction
     learn = load_learner('./transfer_learn_fastai.pkl')
