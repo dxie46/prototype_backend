@@ -5,7 +5,7 @@ import os
 from fastai.vision.all import *
 from utils.parse import label_func
 
-app = Flask(__name__)
+app = Flask()
 
 @app.route('/eye-pressure/predict', methods=["POST"])
 def predict():
