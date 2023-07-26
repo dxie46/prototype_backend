@@ -3,9 +3,9 @@ from PIL import Image
 import pickle
 import os
 from fastai.vision.all import *
-from utils.parse import label_func
+from api.utils.parse import label_func
 
-app = Flask()
+app = Flask(__name__)
 
 @app.route('/eye-pressure/predict', methods=["POST"])
 def predict():
