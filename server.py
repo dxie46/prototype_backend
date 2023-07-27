@@ -13,9 +13,9 @@ def predict():
     file = request.files['image']
     image = PILImage.create(file.stream)
 
-    if not os.path.exists('./transfer_learn_fastai.pkl'):
-        print('model doesnt exist, creating it')
-        train()
+    # if not os.path.exists('./transfer_learn_fastai.pkl'):
+    #     print('model doesnt exist, creating it')
+    #     train()
     
     # make prediction
     print(os.getcwd())
