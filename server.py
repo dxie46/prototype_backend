@@ -22,8 +22,7 @@ def predict():
     # make prediction
     print(os.getcwd())
     plt = platform.system()
-    if plt == 'Windows': 
-        pathlib.WindowsPath = pathlib.PosixPath
+    pathlib.WindowsPath = pathlib.PosixPath
     learn = load_learner('./transfer_learn_fastai.pkl')
     result = learn.predict(image)
     return jsonify({"result": result[0], "probability": str(result[2].numpy()[0])})
