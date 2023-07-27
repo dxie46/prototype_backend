@@ -1,7 +1,9 @@
+import platform
 from flask import Flask, request, jsonify
 from PIL import Image
 import pickle
 import os
+import pathlib
 from fastai.vision.all import *
 from main import label_func, train
 
@@ -19,6 +21,9 @@ def predict():
     
     # make prediction
     print(os.getcwd())
+    plt = platform.system()
+    if plt == 'Windows': 
+        pathlib.WindowsPath = pathlib.PosixPath
     learn = load_learner('./transfer_learn_fastai.pkl')
     result = learn.predict(image)
     return jsonify({"result": result[0], "probability": str(result[2].numpy()[0])})
