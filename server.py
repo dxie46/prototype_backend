@@ -26,6 +26,7 @@ def predict():
     pathlib.WindowsPath = pathlib.PosixPath # needed for heroku
     learn = load_learner('./transfer_learn_fastai.pkl')
     result = learn.predict(image)
-    if (result[0] < 30):
+    print(result[2])
+    if (result[2].numpy()[0] < 0.3):
         return jsonify({"status": "warning", "result": "probability < 30", "probability": str(result[2].numpy()[0])})
     return jsonify({"status": "ok", "result": result[0], "probability": str(result[2].numpy()[0])})
