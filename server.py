@@ -28,5 +28,5 @@ def predict():
     result = learn.predict(image)
     print(result[2])
     if (result[2].numpy()[0] < 0.3):
-        return jsonify({"status": "warning", "result": "probability < 30", "probability": str(result[2].numpy()[0])})
+        return jsonify({"status": "warning - probability < 30", "result": result[0], "probability": str(result[2].numpy()[0])})
     return jsonify({"status": "ok", "result": result[0], "probability": str(result[2].numpy()[0])})
