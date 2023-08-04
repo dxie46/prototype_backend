@@ -18,11 +18,14 @@ def predict():
     # if not os.path.exists('./transfer_learn_fastai.pkl'):
     #     print('model doesnt exist, creating it')
     #     train()
-    
+    if file == None:
+        return jsonify({"status": "error", "result": "no image found", "probability": "0"})
     # make prediction
     print(os.getcwd())
     plt = platform.system()
-    pathlib.WindowsPath = pathlib.PosixPath
+    pathlib.WindowsPath = pathlib.PosixPath # needed for heroku
     learn = load_learner('./transfer_learn_fastai.pkl')
     result = learn.predict(image)
-    return jsonify({"result": result[0], "probability": str(result[2].numpy()[0])})
+    if (result[0] < 30):
+        return jsonify({"status": "warning", "result": "probability < 30", "probability": str(result[2].numpy()[0])})
+    return jsonify({"status": "ok", "result": result[0], "probability": str(result[2].numpy()[0])})
